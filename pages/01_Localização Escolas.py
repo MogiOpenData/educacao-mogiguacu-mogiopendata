@@ -1,7 +1,13 @@
 import streamlit as st
 import pandas as pd
 import pydeck as pdk
-from streamlit_extras.switch_page_button import switch_page
+
+# Configuracoes
+st.set_page_config(
+    page_title="Localização Escolas - Mogi Open Data",
+    layout = "wide",
+    initial_sidebar_state="expanded"
+)
 
 # ######################################
 #     CARREGANDO DADOS
@@ -52,14 +58,6 @@ list_etapas = df_escolas.etapa.unique()
 # ######################################
 # Título e introdução
 
-btn_volta_inicio = st.button(
-    label="Voltar ao início",
-    type="secondary"
-)
-if btn_volta_inicio:
-    switch_page("Início")
-
-
 st.title(":world_map: Localização das Escolas")
 st.markdown("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
 # ######################################
@@ -94,7 +92,8 @@ with col2:
     st.markdown("**Filtro raio**")
     raio_abrangencia = st.radio(
         label="Raio",
-        options=('Péssimo', 'Regular', 'Excelente')
+        options=('Péssimo', 'Regular', 'Excelente'),
+        index=1
     )
 
 # Filtro de etapa
